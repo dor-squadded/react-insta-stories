@@ -8,7 +8,6 @@ const Story = (props: StoryProps) => {
 	);
 
 	const { width, height, loader, header, storyStyles } = globalContext;
-	const { debouncePause, mouseUp } = props.pausePlayFunctions
 	const rendererMessageHandler = (type: string, data: any) => {
 		switch (type) {
 			case 'UPDATE_VIDEO_DURATION':
@@ -18,9 +17,14 @@ const Story = (props: StoryProps) => {
 	}
 
 	const getStoryContent = () => {
-		let InnerContent = props.story.content;
+		let InnerContent = props.story.content as any;
 		let config = { width, height, loader, header, storyStyles };
+		const { debouncePause, mouseUp } = props.pausePlayFunctions
+		const onMouseUp = (type: string) => () => {
+			mouseUp(type)
+		}
 		return <InnerContent
+			onTouchStart={debouncePause} onTouchEnd={onMouseUp('previous')} onMouseDown={debouncePause} onMouseUp={onMouseUp('previous')}
 			action={props.action}
 			isPaused={props.playState}
 			story={props.story}
@@ -28,12 +32,8 @@ const Story = (props: StoryProps) => {
 			messageHandler={rendererMessageHandler}
 		/>
 	};
-	const onMouseUp = (type: string) => () => {
-        mouseUp(type)
-    }
 	return (
 		<div
-			onTouchStart={debouncePause} onTouchEnd={onMouseUp('previous')} onMouseDown={debouncePause} onMouseUp={onMouseUp('previous')}
 			style={{ ...styles.story, width: width, height: height }}
 		>
 			{getStoryContent()}
