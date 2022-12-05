@@ -108,7 +108,7 @@ export default function () {
     const mouseUp = (type: string) => (e: React.MouseEvent | React.TouchEvent) => {
         e.preventDefault()
         mousedownId.current && clearTimeout(mousedownId.current)
-        if (pause) {
+        if (pause || type == 'play') {
             toggleState('play')
         } else {
             type === 'next' ? next() : previous()
@@ -140,6 +140,7 @@ export default function () {
             />
             {!preventDefault && <div style={styles.overlay}>
                 <div className="previous-story-button" style={{ width: '50%', zIndex: 999 }} onTouchStart={debouncePause} onTouchEnd={mouseUp('previous')} onMouseDown={debouncePause} onMouseUp={mouseUp('previous')} />
+                <div onTouchStart={debouncePause} onTouchEnd={mouseUp('play')} onMouseDown={debouncePause} onMouseUp={mouseUp('play')} />
                 <div className="next-story-button" style={{ width: '50%', zIndex: 999 }} onTouchStart={debouncePause} onTouchEnd={mouseUp('next')} onMouseDown={debouncePause} onMouseUp={mouseUp('next')} />
             </div>}
         </div>
