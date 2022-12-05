@@ -140,7 +140,7 @@ export default function () {
             />
             {!preventDefault && <div style={styles.overlay}>
                 <div className="previous-story-button" style={{ width: '50%', zIndex: 999 }} onTouchStart={debouncePause} onTouchEnd={mouseUp('previous')} onMouseDown={debouncePause} onMouseUp={mouseUp('previous')} />
-                <div onTouchStart={debouncePause} onTouchEnd={mouseUp('play')} onMouseDown={debouncePause} onMouseUp={mouseUp('play')} />
+                <div style={{ width: 'inherit' }} onTouchStart={debouncePause} onTouchEnd={mouseUp('play')} onMouseDown={debouncePause} onMouseUp={mouseUp('play')} />
                 <div className="next-story-button" style={{ width: '50%', zIndex: 999 }} onTouchStart={debouncePause} onTouchEnd={mouseUp('next')} onMouseDown={debouncePause} onMouseUp={mouseUp('next')} />
             </div>}
         </div>
