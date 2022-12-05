@@ -16,10 +16,15 @@ const Story = (props: StoryProps) => {
 		}
 	}
 
+	const { debouncePause, mouseUp } = props.pausePlayFunctions
+	const onMouseUp = (type: string) => () => {
+		mouseUp(type)
+	}
 	const getStoryContent = () => {
 		let InnerContent = props.story.content as any;
 		let config = { width, height, loader, header, storyStyles };
 		return <InnerContent
+			// onTouchStart={debouncePause} onTouchEnd={onMouseUp('previous')} onMouseDown={debouncePause} onMouseUp={onMouseUp('previous')}
 			action={props.action}
 			isPaused={props.playState}
 			story={props.story}
@@ -29,6 +34,7 @@ const Story = (props: StoryProps) => {
 	};
 	return (
 		<div
+			// onTouchStart={debouncePause} onTouchEnd={onMouseUp('previous')} onMouseDown={debouncePause} onMouseUp={onMouseUp('previous')}
 			style={{ ...styles.story, width: width, height: height }}
 		>
 			{getStoryContent()}
