@@ -123,10 +123,6 @@ export default function () {
         <div
             className='main-story-container'
             style={{ ...styles.container, ...storyContainerStyles, ...{ width, height } }}
-            onTouchStart={debouncePause}
-            onMouseDown={debouncePause}
-            onTouchEnd={() => mouseUp}
-            onMouseUp={() => mouseUp}
         >
             <ProgressContext.Provider value={{
                 bufferAction: bufferAction,
@@ -145,8 +141,8 @@ export default function () {
                 getVideoDuration={getVideoDuration}
             />
             {!preventDefault && <div style={styles.overlay}>
-                <div className="previous-story-button" style={{ width: '50%', zIndex: 999 }} onClick={mouseUp('previous')} />
-                <div className="next-story-button" style={{ width: '50%', zIndex: 999 }} onClick={mouseUp('next')} />
+                <div className="previous-story-button" style={{ width: '50%', zIndex: 999 }} onTouchStart={debouncePause} onClick={mouseUp('previous')} onMouseDown={debouncePause} />
+                <div className="next-story-button" style={{ width: '50%', zIndex: 999 }} onTouchStart={debouncePause} onClick={mouseUp('next')} onMouseDown={debouncePause} />
             </div>}
         </div>
     )
