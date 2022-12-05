@@ -99,6 +99,7 @@ export default function () {
     }
 
     const debouncePause = (e: React.MouseEvent | React.TouchEvent) => {
+        console.log('debouncePause');
         e.preventDefault()
         mousedownId.current = setTimeout(() => {
             toggleState('pause')
@@ -120,7 +121,8 @@ export default function () {
     }
 
     return (
-        <div style={{ ...styles.container, ...storyContainerStyles, ...{ width, height } }}
+        <div
+        className='main-story-container' style={{ ...styles.container, ...storyContainerStyles, ...{ width, height } }}
             onTouchStart={debouncePause}
             onMouseDown={debouncePause}>
             <ProgressContext.Provider value={{
