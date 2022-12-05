@@ -121,7 +121,7 @@ export default function () {
 
     return (
         <div
-            className='main-story-container'
+            id='main-story-container'
             style={{ ...styles.container, ...storyContainerStyles, ...{ width, height } }}
         >
             <ProgressContext.Provider value={{
