@@ -19,7 +19,6 @@ export default function () {
     const { stories } = useContext<StoriesContextInterface>(StoriesContext);
 
     useEffect(() => {
-        console.log(currentIndex);
         if (typeof currentIndex === 'number') {
             if (currentIndex >= 0 && currentIndex < stories.length) {
                 setCurrentIdWrapper(() => currentIndex)
@@ -30,7 +29,6 @@ export default function () {
     }, [currentIndex])
 
     useEffect(() => {
-        console.log(isPaused);
         if (typeof isPaused === 'boolean') {
             setPause(isPaused)
         }
@@ -101,7 +99,6 @@ export default function () {
     }
 
     const debouncePause = (e: React.MouseEvent | React.TouchEvent) => {
-        console.log('debouncePause');
         e.preventDefault()
         mousedownId.current = setTimeout(() => {
             toggleState('pause')
@@ -127,7 +124,10 @@ export default function () {
             className='main-story-container'
             style={{ ...styles.container, ...storyContainerStyles, ...{ width, height } }}
             onTouchStart={debouncePause}
-            onMouseDown={debouncePause}>
+            onMouseDown={debouncePause}
+            onTouchEnd={debouncePause}
+            onMouseUp={debouncePause}
+        >
             <ProgressContext.Provider value={{
                 bufferAction: bufferAction,
                 videoDuration: videoDuration,
