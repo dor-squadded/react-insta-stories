@@ -86,10 +86,6 @@ export interface StoryProps {
     playState: boolean;
     getVideoDuration: Function;
     bufferAction: boolean;
-    pausePlayFunctions: {
-        debouncePause: (e: React.MouseEvent | React.TouchEvent) => void,
-        mouseUp: (type: string) => void
-    };
 }
 
 export interface StoryState {
