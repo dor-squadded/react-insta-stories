@@ -19,6 +19,7 @@ export default function () {
     const { stories } = useContext<StoriesContextInterface>(StoriesContext);
 
     useEffect(() => {
+        console.log(currentIndex);
         if (typeof currentIndex === 'number') {
             if (currentIndex >= 0 && currentIndex < stories.length) {
                 setCurrentIdWrapper(() => currentIndex)
@@ -29,6 +30,7 @@ export default function () {
     }, [currentIndex])
 
     useEffect(() => {
+        console.log(isPaused);
         if (typeof isPaused === 'boolean') {
             setPause(isPaused)
         }
@@ -122,7 +124,8 @@ export default function () {
 
     return (
         <div
-        className='main-story-container' style={{ ...styles.container, ...storyContainerStyles, ...{ width, height } }}
+            className='main-story-container'
+            style={{ ...styles.container, ...storyContainerStyles, ...{ width, height } }}
             onTouchStart={debouncePause}
             onMouseDown={debouncePause}>
             <ProgressContext.Provider value={{
@@ -140,7 +143,6 @@ export default function () {
                 playState={pause}
                 story={stories[currentId]}
                 getVideoDuration={getVideoDuration}
-                pausePlayFunctions={{ debouncePause, mouseUp }}
             />
             {!preventDefault && <div style={styles.overlay}>
                 <div className="previous-story-button" style={{ width: '50%', zIndex: 999 }} onClick={mouseUp('previous')} />
