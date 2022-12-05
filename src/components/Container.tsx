@@ -125,8 +125,8 @@ export default function () {
             style={{ ...styles.container, ...storyContainerStyles, ...{ width, height } }}
             onTouchStart={debouncePause}
             onMouseDown={debouncePause}
-            onTouchEnd={debouncePause}
-            onMouseUp={debouncePause}
+            onTouchEnd={() => mouseUp}
+            onMouseUp={() => mouseUp}
         >
             <ProgressContext.Provider value={{
                 bufferAction: bufferAction,
