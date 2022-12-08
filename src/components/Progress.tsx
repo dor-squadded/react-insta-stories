@@ -30,6 +30,7 @@ export default (props: ProgressProps) => {
 
 const styles: any = {
     inner: {
+        display: 'block',
         background: '#fff',
         height: '100%',
         maxWidth: '100%',
