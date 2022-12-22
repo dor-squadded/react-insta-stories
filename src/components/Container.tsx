@@ -159,6 +159,7 @@ const styles = {
         height: 'inherit',
         width: 'inherit',
         display: 'flex',
-        touchAction: 'none!important'
+        touchAction: 'none!important',
+        justifyContent: 'space-between',
     }
 }
