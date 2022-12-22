@@ -138,7 +138,7 @@ export default function () {
                 story={stories[currentId]}
                 getVideoDuration={getVideoDuration}
             />
-            {!preventDefault && <div style={styles.overlay}>
+            {!preventDefault && <div className="invisible-buttons-overlay" style={styles.overlay}>
                 <div className="previous-story-button" style={{ width: '50%', zIndex: 999, display: 'block' }} onTouchStart={debouncePause} onTouchEnd={mouseUp('previous')} onMouseDown={debouncePause} onMouseUp={mouseUp('previous')} />
                 <div style={{ width: 'inherit', display: 'block' }} onTouchStart={debouncePause} onTouchEnd={mouseUp('play')} onMouseDown={debouncePause} onMouseUp={mouseUp('play')} />
                 <div className="next-story-button" style={{ width: '50%', zIndex: 999, display: 'block' }} onTouchStart={debouncePause} onTouchEnd={mouseUp('next')} onMouseDown={debouncePause} onMouseUp={mouseUp('next')} />
@@ -159,7 +159,7 @@ const styles = {
         height: 'inherit',
         width: 'inherit',
         display: 'flex',
-        touchAction: 'none!important',
+        touchAction: 'none !important',
         justifyContent: 'space-between',
     }
 }
