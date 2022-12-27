@@ -39,6 +39,7 @@ export interface GlobalCtx {
         renderer: Renderer;
         tester: Tester
     }[];
+    onStoryNavigated?: Function;
     onAllStoriesEnd?: Function;
     onStoryStart?: Function;
     onStoryEnd?: Function;

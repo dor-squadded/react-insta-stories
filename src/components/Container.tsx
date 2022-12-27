@@ -15,7 +15,7 @@ export default function () {
     let mousedownId = useRef<any>();
     let isMounted = useRef<boolean>(true);
 
-    const { width, height, loop, currentIndex, isPaused, keyboardNavigation, preventDefault, storyContainerStyles = {}, onAllStoriesEnd } = useContext<GlobalCtx>(GlobalContext);
+    const { onStoryNavigated, width, height, loop, currentIndex, isPaused, keyboardNavigation, preventDefault, storyContainerStyles = {}, onAllStoriesEnd } = useContext<GlobalCtx>(GlobalContext);
     const { stories } = useContext<StoriesContextInterface>(StoriesContext);
 
     useEffect(() => {
@@ -27,6 +27,12 @@ export default function () {
             }
         }
     }, [currentIndex])
+
+    useEffect(() => {
+        if (onStoryNavigated) {
+            onStoryNavigated()
+        }
+    }, [currentId])
 
     useEffect(() => {
         if (typeof isPaused === 'boolean') {
