@@ -12,6 +12,7 @@ export interface ReactInstaStoriesProps {
     loop?: boolean;
     defaultInterval?: number;
     isPaused?: boolean;
+    onStoryNavigated?: Function;
     currentIndex?: number;
     renderers?: {
         renderer: Renderer;
