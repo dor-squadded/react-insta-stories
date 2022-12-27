@@ -12,7 +12,7 @@ export interface ReactInstaStoriesProps {
     loop?: boolean;
     defaultInterval?: number;
     isPaused?: boolean;
-    onStoryNavigated?: Function;
+    onStoryNavigated?: () => void;
     currentIndex?: number;
     renderers?: {
         renderer: Renderer;
@@ -40,7 +40,7 @@ export interface GlobalCtx {
         renderer: Renderer;
         tester: Tester
     }[];
-    onStoryNavigated?: Function;
+    onStoryNavigated?: () => void;
     onAllStoriesEnd?: Function;
     onStoryStart?: Function;
     onStoryEnd?: Function;

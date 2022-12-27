@@ -29,9 +29,7 @@ export default function () {
     }, [currentIndex])
 
     useEffect(() => {
-        if (onStoryNavigated) {
-            onStoryNavigated()
-        }
+        onStoryNavigated && onStoryNavigated()
     }, [currentId])
 
     useEffect(() => {
